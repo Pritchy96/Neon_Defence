@@ -5,24 +5,19 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
-    public class Laser : Tower
+    public class MachineGun : Tower
     {
-
-        int maxNumberOfHits;
-        List<Enemy> enemies;
-
         //Constructor.
-        public Laser(Texture2D baseTexture, Texture2D upgradedTexture, Texture2D bulletTexture, Vector2 position)
-            : base(baseTexture, upgradedTexture, bulletTexture, position)    //Inheriting the Tower class & providing its constructors.
+        public MachineGun(Texture2D baseTexture, Texture2D upgradedTexture, Texture2D bulletTexture, Vector2 position)
+            : base(baseTexture, upgradedTexture, bulletTexture, position)    //Inheriting the Tower class & providing it's constructors.
         {
             //setting range, cost, damage.
             this.damage = 1;
             this.cost = 15;
             this.range = 80;
             this.RoF = 0.1f;
-            this.maxNumberOfHits = 3;
         }
 
 
@@ -42,12 +37,8 @@ namespace Tower_Defence_Tutorials
             if (bulletTimer >= RoF && target != null)
             {
                 //create a bullet at the centre of the tower.
-                LaserBullet bullet = new LaserBullet(bulletTexture, Vector2.Subtract(center,
-                    new Vector2(bulletTexture.Width / 2)), rotation, 20, damage, maxNumberOfHits);
-
-                //Get list of enemies for removing hit enemies.
-               // enemies = base.;
-
+                Bullet bullet = new Bullet(bulletTexture, Vector2.Subtract(center,
+                    new Vector2(bulletTexture.Width / 2)), rotation, 20, damage);
 
                 //Add bullet to list.
                 bulletList.Add(bullet);
@@ -63,13 +54,16 @@ namespace Tower_Defence_Tutorials
                 bullet.SetRotation(rotation);
                 bullet.Update(gameTime);
 
+                //If the bullet is out of the range of the tower, kill it.
+                if (!IsInRange(bullet.Center))
+                    bullet.Kill();
 
                 //Does the bullet get close enough to the enemy to consider it a hit?
                 if(target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
                 {
                     //if so, damage the enemy and destroy the bullet.
                     target.CurrentHealth -= bullet.Damage;
-                   // bullet.recalculate();
+                    bullet.Kill();
                 }
                 // Removing bullet from the game. But not really.
                 if (bullet.isDead())

@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Tower_Defence_Tutorials</RootNamespace>
+    <RootNamespace>Tower_Defence</RootNamespace>
     <AssemblyName>Tower Defence Tutorials</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
@@ -122,12 +122,11 @@
   <ItemGroup>
     <Compile Include="Towers\Bullet.cs" />
     <Compile Include="GUI\Button.cs" />
-    <Compile Include="Towers\LaserBullet.cs" />
-    <Compile Include="Towers\Laser.cs" />
+    <Compile Include="Towers\Sniper.cs" />
     <Compile Include="Towers\Slow.cs" />
     <Compile Include="Waves&amp;Enemies\Enemies\Enemy.cs" />
     <Compile Include="Levels\Level.cs" />
-    <Compile Include="Towers\PeaShooter.cs" />
+    <Compile Include="Towers\Basic.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
@@ -142,6 +141,7 @@
   <ItemGroup>
     <Content Include="Game.ico" />
     <Content Include="GameThumbnail.png" />
+    <Content Include="Notes.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tower Defence TutorialsContent\Tower Defence Content.contentproj">

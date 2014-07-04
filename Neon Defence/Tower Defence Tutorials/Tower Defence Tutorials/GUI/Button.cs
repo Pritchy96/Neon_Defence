@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
 
     // Describes the state of the button

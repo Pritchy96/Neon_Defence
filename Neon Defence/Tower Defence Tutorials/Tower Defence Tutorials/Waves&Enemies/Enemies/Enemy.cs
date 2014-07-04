@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
     
     public class Enemy : Sprite

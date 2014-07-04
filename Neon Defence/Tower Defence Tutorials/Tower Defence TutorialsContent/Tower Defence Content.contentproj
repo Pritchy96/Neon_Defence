@@ -49,8 +49,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Towers\MachineGun\PeaShooterBullet.bmp">
-      <Name>PeaShooterBullet</Name>
+    <Compile Include="Towers\MachineGun\MachineGunBullet.bmp">
+      <Name>MachineGunBullet</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <ProcessorParameters_ColorKeyColor>0, 0, 0, 255</ProcessorParameters_ColorKeyColor>
@@ -227,6 +227,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tiles\Cross.bmp">
+      <Name>Cross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="Towers\Laser\LaserBullet.png">
       <Name>LaserBullet</Name>
       <Importer>TextureImporter</Importer>

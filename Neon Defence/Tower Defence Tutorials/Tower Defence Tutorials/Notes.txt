@@ -1,0 +1,3 @@
+﻿Slow fires too slowly/range is too small to hit aything if placed in the middle of a wave. 
+	This is because it constantly aims at the creep about to leave it's range radius. Does the shooting wait
+	timer reset when finding a new target?

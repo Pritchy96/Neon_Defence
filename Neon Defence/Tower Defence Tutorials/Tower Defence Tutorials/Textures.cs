@@ -5,13 +5,13 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
     public static class Textures
     {
         private static ContentManager Content;
 
-        private const int COUNT_TILES = 7;
+        private const int COUNT_TILES = 8;
         private static Texture2D[] Tiles;
 
         private const int COUNT_BACKGROUNDS = 1;
@@ -34,7 +34,8 @@ namespace Tower_Defence_Tutorials
             LoadTile(3, "TopLeft");        
             LoadTile(4, "BottomLeft");      
             LoadTile(5, "Horizontal");        
-            LoadTile(6, "Vertical");      
+            LoadTile(6, "Vertical");
+            LoadTile(7, "Cross");
         }
 
         public static void UnLoadContent()

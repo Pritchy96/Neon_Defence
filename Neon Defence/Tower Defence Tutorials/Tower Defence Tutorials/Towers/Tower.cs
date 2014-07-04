@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
     public class Tower : Sprite
     {
@@ -167,7 +167,7 @@ namespace Tower_Defence_Tutorials
                     //set target to nothing(null)
                     target = null;
                     //and restart the bullet timer. No idea why?!
-                    bulletTimer = 0;
+                    //bulletTimer = 0;
                 }
             }
         }

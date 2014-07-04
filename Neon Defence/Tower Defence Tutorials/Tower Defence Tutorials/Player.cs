@@ -6,13 +6,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
     public class Player
     {
         #region Class Variables and Properties.
 
-        public int money = 300000000;
+        public int money = 300;
         public int lives = 30;
 
         private List<Tower> towers = new List<Tower>();
@@ -117,9 +117,9 @@ namespace Tower_Defence_Tutorials
 
             switch (newTowerType)
             {
-                case "PeaShooter":
+                case "MachineGun":
                     {
-                        towerToAdd = new PeaShooter(towerTextures[0,0], towerTextures[0,1], bulletTexture,
+                        towerToAdd = new MachineGun(towerTextures[0,0], towerTextures[0,1], bulletTexture,
                             new Vector2(tileX, tileY)); 
                         break;
                     }
@@ -131,9 +131,9 @@ namespace Tower_Defence_Tutorials
                         break;
                     }
 
-                case "Laser":
+                case "Sniper":
                     {
-                        towerToAdd = new Laser(towerTextures[2, 0], towerTextures[2, 0], laserTexture,
+                        towerToAdd = new Sniper(towerTextures[2, 0], towerTextures[2, 0], laserTexture,
                             new Vector2(tileX, tileY));
                         break;
                     }

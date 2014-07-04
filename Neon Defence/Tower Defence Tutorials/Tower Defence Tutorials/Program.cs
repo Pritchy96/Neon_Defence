@@ -1,6 +1,6 @@
 using System;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
 #if WINDOWS || XBOX
     static class Program

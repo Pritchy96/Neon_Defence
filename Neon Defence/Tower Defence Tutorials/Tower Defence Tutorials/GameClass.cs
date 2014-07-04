@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
     public class GameClass : Microsoft.Xna.Framework.Game
     {
@@ -38,7 +38,7 @@ namespace Tower_Defence_Tutorials
 
         //GUI
         Toolbar toolBar;
-        Button peaShooterButton;
+        Button MachineGunButton;
         Button slowButton;
         Button laserButton;
 
@@ -81,9 +81,9 @@ namespace Tower_Defence_Tutorials
             Texture2D ToolBar = Content.Load<Texture2D>("GUI\\Toolbar");
             SpriteFont font = Content.Load<SpriteFont>("GUI\\Arial");
 
-            //GUI for PeaShooter
-            Texture2D PeaShooterNormal = Content.Load<Texture2D>("GUI\\MachineGun\\MachineGunButtonNormal");
-            Texture2D PeaShooterHover = Content.Load<Texture2D>("GUI\\MachineGun\\MachineGunButtonHover");
+            //GUI for MachineGun
+            Texture2D MachineGunNormal = Content.Load<Texture2D>("GUI\\MachineGun\\MachineGunButtonNormal");
+            Texture2D MachineGunHover = Content.Load<Texture2D>("GUI\\MachineGun\\MachineGunButtonHover");
 
             //GUI for Slow
             Texture2D SlowNormal = Content.Load<Texture2D>("GUI\\Slow\\SlowButtonNormal");
@@ -95,17 +95,17 @@ namespace Tower_Defence_Tutorials
 
 
             //Initalize Toolbar Buttons
-            peaShooterButton = new Button(PeaShooterNormal, PeaShooterHover, new Vector2(20, level.Height * 43));
-            peaShooterButton.Clicked += new EventHandler(PeaShooterButton_Clicked);
-            peaShooterButton.OnPress += new EventHandler(PeaShooterButton_OnPress);
+            MachineGunButton = new Button(MachineGunNormal, MachineGunHover, new Vector2(20, level.Height * 43));
+            MachineGunButton.Clicked += new EventHandler(MachineGunButton_Clicked);
+            MachineGunButton.OnPress += new EventHandler(MachineGunButton_OnPress);
 
             slowButton = new Button(SlowNormal, SlowHover, new Vector2(80, level.Height * 43));
             slowButton.Clicked += new EventHandler(SlowButton_Clicked);
             slowButton.OnPress += new EventHandler(SlowButton_OnPress);
 
             laserButton = new Button(LaserNormal, LaserHover, new Vector2(140, level.Height * 43));
-            laserButton.Clicked += new EventHandler(LaserButton_Clicked);
-            laserButton.OnPress += new EventHandler(LaserButton_OnPress);
+            laserButton.Clicked += new EventHandler(SniperButton_Clicked);
+            laserButton.OnPress += new EventHandler(SniperButton_OnPress);
 
             //Radius texture
             Texture2D radiusTexture = Content.Load<Texture2D>("RadiusTexture");
@@ -125,14 +125,14 @@ namespace Tower_Defence_Tutorials
 
             towerTextures[0, 0] = Content.Load<Texture2D>("Towers\\MachineGun\\MachineGun");
             towerTextures[0, 1] = Content.Load<Texture2D>("Towers\\MachineGun\\MachineGunUpgraded");
-            Texture2D bulletTexture = Content.Load<Texture2D>("Towers\\MachineGun\\PeaShooterBullet");
+            Texture2D bulletTexture = Content.Load<Texture2D>("Towers\\MachineGun\\MachineGunBullet");
 
             towerTextures[1, 0] = Content.Load<Texture2D>("Towers\\Slow\\Slow");
             towerTextures[1, 1] = Content.Load<Texture2D>("Towers\\Slow\\SlowUpgraded");
 
             towerTextures[2, 0] = Content.Load<Texture2D>("Towers\\Laser\\Laser");
             towerTextures[2, 1] = Content.Load<Texture2D>("Towers\\Laser\\LaserUpgraded");
-            Texture2D laserTexture = Content.Load<Texture2D>("Towers\\MachineGun\\PeaShooterBullet");
+            Texture2D laserTexture = Content.Load<Texture2D>("Towers\\MachineGun\\MachineGunBullet");
             #endregion
             
             #region Initializing things needing these Textures.
@@ -157,10 +157,10 @@ namespace Tower_Defence_Tutorials
         #region Click and Drag events Events.
 
         //Click Events.
-        //Telling player class we want to build a Peashooter.
-        private void PeaShooterButton_Clicked(object sender, EventArgs e)
+        //Telling player class we want to build a MachineGun.
+        private void MachineGunButton_Clicked(object sender, EventArgs e)
         {
-            player.NewTowerType = "PeaShooter";
+            player.NewTowerType = "MachineGun";
             player.NewTowerIndex = 0;
         }
 
@@ -170,16 +170,16 @@ namespace Tower_Defence_Tutorials
             player.NewTowerIndex = 1;
         }
 
-        private void LaserButton_Clicked(object sender, EventArgs e)
+        private void SniperButton_Clicked(object sender, EventArgs e)
         {
-            player.NewTowerType = "Laser";
+            player.NewTowerType = "Sniper";
             player.NewTowerIndex = 2;
         }
 
         //Drag events
-        private void PeaShooterButton_OnPress(object sender, EventArgs e)
+        private void MachineGunButton_OnPress(object sender, EventArgs e)
         {
-            player.NewTowerType = "PeaShooter";
+            player.NewTowerType = "MachineGun";
             player.NewTowerIndex = 0;
         }
 
@@ -189,9 +189,9 @@ namespace Tower_Defence_Tutorials
             player.NewTowerIndex = 1;
         }
 
-        private void LaserButton_OnPress(object sender, EventArgs e)
+        private void SniperButton_OnPress(object sender, EventArgs e)
         {
-            player.NewTowerType = "Laser";
+            player.NewTowerType = "Sniper";
             player.NewTowerIndex = 2;
         }
         
@@ -216,7 +216,7 @@ namespace Tower_Defence_Tutorials
                     player.Update(gameTime, waveManager.Enemies);
 
                     //Button updates.
-                    peaShooterButton.Update(gameTime);
+                    MachineGunButton.Update(gameTime);
                     slowButton.Update(gameTime);
                     laserButton.Update(gameTime);
 
@@ -251,7 +251,7 @@ namespace Tower_Defence_Tutorials
 
             //GUI
             toolBar.Draw(spriteBatch, player, waveManager);
-            peaShooterButton.Draw(spriteBatch);
+            MachineGunButton.Draw(spriteBatch);
             slowButton.Draw(spriteBatch);
             laserButton.Draw(spriteBatch);
 

@@ -5,33 +5,34 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace Tower_Defence_Tutorials
+namespace Tower_Defence
 {
-    public class PeaShooter : Tower
+    public class Sniper : Tower
     {
         //Constructor.
-        public PeaShooter(Texture2D baseTexture, Texture2D upgradedTexture, Texture2D bulletTexture, Vector2 position)
+        public Sniper(Texture2D baseTexture, Texture2D upgradedTexture, Texture2D bulletTexture, Vector2 position)
             : base(baseTexture, upgradedTexture, bulletTexture, position)    //Inheriting the Tower class & providing it's constructors.
         {
             //setting range, cost, damage.
-            this.damage = 1;
-            this.cost = 15;
-            this.range = 80;
-            this.RoF = 0.1f;
+            this.damage = 15;
+            this.cost = 50;
+            this.range = 110;
+            this.RoF = 1f;
         }
 
 
         //Upgrading the towers values.
         public override void Upgrade()
         {
-            damage *= 2f;
-            range *= 1.1f;
+            base.damage *= 1.5f;
+            base.range *= 1.5f;
+            base.RoF *= 1.2f;
             base.Upgrade();
         }
 
         public override void Update(GameTime gameTime)
         {
-            
+
             //If enough time has passed for the gun to fire again
             //and we have a target..
             if (bulletTimer >= RoF && target != null)
@@ -48,8 +49,8 @@ namespace Tower_Defence_Tutorials
 
             for (int i = 0; i < bulletList.Count; i++)
             {
-                Bullet bullet = bulletList[i]; 
-                
+                Bullet bullet = bulletList[i];
+
                 //'bending' bullets toward enemys.
                 bullet.SetRotation(rotation);
                 bullet.Update(gameTime);
@@ -59,7 +60,7 @@ namespace Tower_Defence_Tutorials
                     bullet.Kill();
 
                 //Does the bullet get close enough to the enemy to consider it a hit?
-                if(target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
+                if (target != null && Vector2.Distance(bullet.Center, target.Center) < 12)
                 {
                     //if so, damage the enemy and destroy the bullet.
                     target.CurrentHealth -= bullet.Damage;
