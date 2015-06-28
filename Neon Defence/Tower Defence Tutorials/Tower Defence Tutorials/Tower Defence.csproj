@@ -135,7 +135,7 @@
     <Compile Include="Textures.cs" />
     <Compile Include="GUI\Toolbar.cs" />
     <Compile Include="Towers\Tower.cs" />
-    <Compile Include="Waves&amp;Enemies\Wave.cs" />
+    <Compile Include="Wave.cs" />
     <Compile Include="Waves&amp;Enemies\WaveManager.cs" />
   </ItemGroup>
   <ItemGroup>

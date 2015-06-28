@@ -154,7 +154,7 @@ namespace Tower_Defence
         {
             if (alive)
             {
-                base.Draw(spriteBatch, Color.White);
+                base.Draw(spriteBatch, Color.Red);
             }
         }
     }

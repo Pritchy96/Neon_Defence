@@ -65,6 +65,8 @@ namespace Tower_Defence
             //.Transform rotates the vector speed to have the same rotation as out tower.
             velocity = Vector2.Transform(new Vector2(0, -speed),
                 Matrix.CreateRotationZ(rotation));
+
+            
         }
 
 

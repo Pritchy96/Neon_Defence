@@ -312,9 +312,6 @@ namespace Tower_Defence
                 prevKeyState = currentKeyState; //Set Oldstate to the state of the previous frame.
         }
 
-
-        
-
         //Drawing/Renering.
         public void Draw(SpriteBatch spriteBatch)
         {

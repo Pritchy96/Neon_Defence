@@ -140,7 +140,7 @@ namespace Tower_Defence
             //Initalize player.
             player = new Player(level, towerTextures, bulletTexture, laserTexture, radiusTexture);
             //Initialize wave
-            waveManager = new WaveManager(level, 1000, enemyTexture, healthBarTexture, player);
+            waveManager = new WaveManager(level, 10000, enemyTexture, healthBarTexture, player);
             //Initialize toolbar
             toolBar = new Toolbar(ToolBar, font, new Vector2(0, level.Height *40));
             #endregion
@@ -228,6 +228,13 @@ namespace Tower_Defence
             {
                 // Toggle paused.
                 paused = !paused;
+            }
+
+            //If Space is pressed
+            if (keyState.IsKeyUp(Keys.M) && prevKeyState.IsKeyDown(Keys.M))
+            {
+                // Toggle paused.
+                player.money += 100;
             }
 
             //Update prevKeyState
